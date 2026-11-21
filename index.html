@@ -34,10 +34,12 @@
     section{padding:80px 0;}
     nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);background:var(--nav-bg);border-bottom:1px solid var(--border);transition:background .4s;}
     .nav-inner{max-width:1100px;margin:0 auto;padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;}
-    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--accent);}
-    .nav-links{display:flex;gap:1.4rem;list-style:none;align-items:center;}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--accent);white-space:nowrap;flex-shrink:0;}
+    .nav-links{display:flex;gap:1.1rem;list-style:none;align-items:center;}
     .nav-links a{font-size:.76rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text2);transition:color .2s;}
     .nav-links a:hover{color:var(--accent2);}
+    .nav-links a.active{color:var(--accent);font-weight:700;position:relative;}
+    .nav-links a.active::after{content:'';position:absolute;left:0;right:0;bottom:-9px;height:2px;border-radius:2px;background:var(--accent2);}
     .theme-btn{background:none;border:1.5px solid var(--border);border-radius:50px;padding:5px 12px;cursor:pointer;font-size:.74rem;font-family:'DM Mono',monospace;color:var(--text2);transition:all .2s;}
     .theme-btn:hover{border-color:var(--accent2);color:var(--accent2);}
     .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
@@ -45,6 +47,7 @@
     .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:1.5rem 2rem;z-index:99;flex-direction:column;gap:1rem;}
     .mobile-menu.open{display:flex;}
     .mobile-menu a{font-size:1rem;color:var(--text2);padding:.5rem 0;border-bottom:1px solid var(--border);}
+    .mobile-menu a.active{color:var(--accent);font-weight:700;border-bottom-color:var(--accent2);}
     .vc{font-size:.7rem;font-family:'DM Mono',monospace;color:var(--text3);display:flex;align-items:center;gap:.3rem;}
     .vc-dot{width:6px;height:6px;border-radius:50%;background:#4CAF50;animation:vcpulse 2s infinite;}
     @keyframes vcpulse{0%,100%{opacity:1}50%{opacity:.3}}
@@ -98,6 +101,10 @@
     .social-link.gs:hover{border-color:#4285f4;color:#4285f4;background:#e8f0fe;}
     .social-link.rg:hover{border-color:#40ba9b;color:#40ba9b;background:#e6f7f3;}
     .social-link.ig:hover{border-color:#e1306c;color:#e1306c;background:#fde8ef;}
+    .social-link.orcid:hover{border-color:#a6ce39;color:#6b8e23;background:#f2f8df;}
+    .social-link.email:hover{border-color:#b04a4a;color:#b04a4a;background:#fbeeee;}
+    .profile-email{display:block;margin-top:.65rem;text-align:center;font-size:.7rem;color:var(--text3);}
+    .profile-email:hover{color:var(--accent2);}
     .about-content p{color:var(--text2);margin-bottom:.85rem;font-size:.92rem;text-align:justify;}
     #education{background:var(--bg);}
     .edu-timeline{position:relative;padding-left:1.8rem;}
@@ -141,6 +148,9 @@
     .show-more-btn:hover,.show-less-btn:hover{border-color:var(--accent2);color:var(--accent2);}
     .pub-hidden{display:none;}
     .pub-hidden.shown{display:flex;}
+    .clean-extra{display:none;}
+    .section-extra{display:none!important;}
+    .section-extra.visible{display:flex!important;}
     #projects{background:var(--bg);}
     .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.3rem;}
     .project-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s;box-shadow:var(--shadow);}
@@ -172,6 +182,13 @@
     .cert-link{display:inline-flex;align-items:center;gap:.28rem;font-size:.71rem;font-weight:500;color:var(--accent2);border:1px solid var(--accent2);border-radius:5px;padding:4px 10px;transition:all .2s;cursor:pointer;background:none;}
     .cert-link:hover{background:var(--accent3);color:var(--accent);}
     #certificates{background:var(--bg);}
+    .certificate-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;margin-top:1.5rem;}
+    .certificate-thumb{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:.55rem;cursor:pointer;text-align:left;transition:transform .2s,border-color .2s;box-shadow:var(--shadow);}
+    .certificate-thumb:hover{transform:translateY(-3px);border-color:var(--accent2);}
+    .certificate-thumb iframe{display:block;width:100%;height:145px;border:0;border-radius:7px;background:#fff;pointer-events:none;}
+    .certificate-thumb span{display:block;padding:.55rem .2rem .15rem;font-size:.72rem;line-height:1.35;color:var(--text2);}
+    .award-preview{display:block;width:100%;height:120px;border:0;border-radius:7px;overflow:hidden;background:#fff;padding:0;margin:0 0 .85rem;cursor:pointer;}
+    .award-preview iframe{width:100%;height:100%;border:0;pointer-events:none;background:#fff;}
     .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.1rem;}
     .cert-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;display:flex;align-items:center;gap:.9rem;transition:all .25s;box-shadow:var(--shadow);}
     .cert-card:hover{border-color:var(--accent2);transform:translateY(-2px);box-shadow:var(--shadow-lg);}
@@ -181,6 +198,11 @@
     .cert-card-info .cert-date{font-family:'DM Mono',monospace;font-size:.66rem;color:var(--accent2);margin-top:.18rem;}
     #skills{background:var(--bg2);}
     .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.1rem;}
+    #additional-info{background:var(--bg);}
+    .additional-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;}
+    .additional-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;box-shadow:var(--shadow);}
+    .additional-card h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--accent2);margin-bottom:.75rem;}
+    .additional-card p{font-size:.82rem;color:var(--text2);line-height:1.7;margin:.35rem 0;}
     .skill-group{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:1rem 1.2rem;transition:all .25s;}
     .skill-group:hover{border-color:var(--accent2);box-shadow:var(--shadow);}
     .skill-group-label{font-size:.68rem;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--accent2);margin-bottom:.6rem;display:flex;align-items:center;gap:.35rem;}
@@ -268,11 +290,12 @@
     <a class="nav-logo" href="#hero">Nur-E Sarjina Khan</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#education">Education</a></li>
+      <li><a href="#education">Education</a></li><li><a href="#experience">Experience</a></li>
       <li><a href="#publications">Research</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#awards">Awards</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#additional-info">More</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><div class="vc"><span class="vc-dot"></span><span id="viewCount">—</span> views</div></li>
       <li><button class="theme-btn" id="themeToggle"><span id="themeIcon">◐ Dark</span></button></li>
@@ -282,11 +305,12 @@
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about" onclick="closeMenu()">About</a>
-  <a href="#education" onclick="closeMenu()">Education</a>
+  <a href="#education" onclick="closeMenu()">Education</a><a href="#experience" onclick="closeMenu()">Experience</a>
   <a href="#publications" onclick="closeMenu()">Research</a>
   <a href="#projects" onclick="closeMenu()">Projects</a>
   <a href="#awards" onclick="closeMenu()">Awards</a>
   <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#additional-info" onclick="closeMenu()">More</a>
   <a href="#contact" onclick="closeMenu()">Contact</a>
   <button class="theme-btn" onclick="toggleTheme()"><span id="themeIconMobile">◐ Dark</span></button>
 </div>
@@ -296,21 +320,22 @@
       <div class="hero-text">
         <p class="eyebrow">Computer Science Researcher · AIUB · Bangladesh</p>
         <h1>Nur-E<br/><em>Sarjina</em><br/>Khan</h1>
-        <p class="hero-subtitle">AI Researcher </p>
+        <p class="hero-subtitle">AI Researcher · ML Engineer · Software Engineer</p>
         <div class="hero-tags">
-          <span class="tag">Deep Learning</span><span class="tag">Computer Vision</span><span class="tag">NLP</span><span class="tag">Data Science</span>
-          <span class="tag">HCI</span><span class="tag">IoT</span><span class="tag">Explainable AI</span>
+          <span class="tag">Machine Learning</span><span class="tag">Deep Learning</span><span class="tag">NLP</span><span class="tag">Explainable AI</span>
+          <span class="tag">Computer Vision</span><span class="tag">Agentic AI</span><span class="tag">IoT</span>
         </div>
         <div class="hero-btns">
           <a href="#publications" class="btn-primary"><i class="fa fa-flask"></i> View Research</a>
+          <a href="#projects" class="btn-outline"><i class="fa fa-briefcase"></i> View Projects</a>
           <a href="Nur-E_Sarjina_Khan_Resume.pdf" download class="btn-outline"><i class="fa fa-download"></i> Download CV</a>
           <button class="btn-video" onclick="openVideoModal()"><i class="fa fa-play-circle"></i> Video Portfolio</button>
         </div>
         <div class="hero-stats">
           <div class="stat-item"><span class="stat-num">3.98</span><span class="stat-label">CGPA/4.00</span></div>
-          <div class="stat-item"><span class="stat-num">3</span><span class="stat-label">Published</span></div>
-          <div class="stat-item"><span class="stat-num">8</span><span class="stat-label">Research Works</span></div>
-          <div class="stat-item"><span class="stat-num">5</span><span class="stat-label">Under Review</span></div>
+          <div class="stat-item"><span class="stat-num">16</span><span class="stat-label">Research Works</span></div>
+          <div class="stat-item"><span class="stat-num">11</span><span class="stat-label">Projects</span></div>
+          <div class="stat-item"><span class="stat-num">2</span><span class="stat-label">Experience</span></div>
         </div>
       </div>
       <div class="hero-image-wrap">
@@ -332,20 +357,21 @@
         <img src="sarjin.jpg" alt="Nur-E Sarjina Khan" onerror="this.style.background='linear-gradient(135deg,#c8d8e4,#4a6f87)';this.style.minHeight='260px';this.alt=''"/>
         <h3>Nur-E Sarjina Khan</h3>
         <p>BSc CSE · AIUB · Dhaka, Bangladesh</p>
-        <p style="color:var(--accent2);font-size:.76rem;margin-top:.15rem;">IEEE Student Member · ACES Member</p>
+        <p style="color:var(--accent2);font-size:.76rem;margin-top:.15rem;">IEEE Student Member</p>
         <div class="social-links">
           <a href="https://www.linkedin.com/in/nur-e-sarjina-khan" target="_blank" class="social-link li" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           <a href="https://github.com/sarjinkhan2003" target="_blank" class="social-link gh" title="GitHub"><i class="fab fa-github"></i></a>
           <a href="https://scholar.google.com/citations?user=61wlY98AAAAJ&hl=en" target="_blank" class="social-link gs" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
           <a href="https://www.researchgate.net/profile/Nur-E-Khan-2" target="_blank" class="social-link rg" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
-          <a href="https://www.instagram.com/" target="_blank" class="social-link ig" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://orcid.org/0009-0008-8241-4624" target="_blank" rel="noopener" class="social-link orcid" title="ORCID"><i class="fab fa-orcid"></i></a>
         </div>
+        <a href="mailto:khan.sarjin.cse@gmail.com" class="profile-email">khan.sarjin.cse@gmail.com</a>
       </div>
       <div class="about-content fade-in">
-        <p>I am a final-year undergraduate in Computer Science at the American International University-Bangladesh, where my research lives at the intersection of Explainable AI, Human-Computer Interaction, and deep learning architectures.</p>
-        <p>My work is driven by a single belief: powerful AI is only meaningful when it is interpretable. From predicting motorcycle accident severity using behavioural archetypes and XAI methods, to building lightweight transformer frameworks for resource-constrained IoT devices, my research consistently bridges algorithmic complexity with real-world usability.</p>
-        <p>I am deeply invested in advancing Bangla NLP — a field still significantly underserved relative to the scale of its speakers. My ongoing projects, DocReader BD and the Bangla Lemmatizer, aim to make intelligent document comprehension and linguistic tooling accessible to a vast community.</p>
-        <p>Beyond research, I bring hands-on experience across full-stack development, embedded systems, and user-centred design — skills I apply both in collaborative research settings and independent engineering projects.</p>
+        <p>I am a research-driven Computer Science graduate with a strong passion for exploring the intersection of <strong>Artificial Intelligence and Software Engineering</strong>. My expertise spans Machine Learning, Deep Learning, Natural Language Processing (NLP), Explainable AI (XAI), Computer Vision, Agentic AI, and IoT-based intelligent systems.</p>
+        <p>Beyond research, I have hands-on experience in <strong>full-stack software development, software quality assurance, and building scalable, AI-integrated applications</strong>. I enjoy transforming complex ideas and advanced AI research into practical, efficient, and intuitive solutions that address real-world challenges.</p>
+        <p>My academic and research journey has involved contributing to peer-reviewed international publications, developing intelligent systems, and working on multidisciplinary projects that connect emerging technologies with real-world applications. These experiences have strengthened my analytical thinking, problem-solving abilities, and commitment to continuous learning.</p>
+        <p><strong>My goal is to bridge the gap between cutting-edge AI research and industry-ready software engineering</strong>, creating intelligent, scalable, and human-centered technologies that deliver meaningful impact.</p>
       </div>
     </div>
   </div>
@@ -358,9 +384,9 @@
         <div class="edu-card">
           <div class="edu-card-top">
             <div><h3>American International University-Bangladesh (AIUB)</h3><p>Bachelor of Science in Computer Science and Engineering · Major: Information Systems · Dhaka, Bangladesh</p></div>
-            <div class="edu-date">Sep 2022 – Dec 2026<br/>(Expected)</div>
+            <div class="edu-date">September 2022 – November 2026</div>
           </div>
-          <div><span class="edu-badge">🏅 CGPA: 3.98 / 4.00</span><span class="edu-badge">🎓 Dean's List · 3× consecutive</span></div>
+          <div><span class="edu-badge">🏅 CGPA: 3.98 / 4.00</span><span class="edu-badge">🎓 Dean's List · 5 consecutive semesters</span><span class="edu-badge">🏫 70% academic scholarship</span></div>
         </div>
       </div>
       <div class="edu-item fade-in">
@@ -384,9 +410,18 @@
     </div>
   </div>
 </section>
-<section id="publications">
+<section id="experience">
   <div class="container">
-    <div class="section-header fade-in"><span class="overline">Academic Output</span><h2>Research &amp; Publications</h2><p>Peer-reviewed contributions across IEEE, IJECE, IET, and international venues.</p></div>
+    <div class="section-header fade-in"><span class="overline">Professional Background</span><h2>Experience</h2></div>
+    <div class="edu-timeline">
+      <div class="edu-item fade-in"><div class="edu-card"><div class="edu-card-top"><div><h3>Trainee Software Engineer · Nexulyze</h3><p>Dhaka, Bangladesh</p></div><div class="edu-date">September 2026 – Ongoing</div></div><p>Developing responsive portfolio and SaaS interfaces with React, TypeScript, and Tailwind CSS; conducting interface audits and collaborating through Git-based feature branches and code reviews.</p></div></div>
+      <div class="edu-item fade-in"><div class="edu-card"><div class="edu-card-top"><div><h3>SQA Intern · ExamBinary Ltd</h3><p>Dhaka, Bangladesh</p></div><div class="edu-date">May 10 – August 10, 2026</div></div><p>Conducted functional, black-box, software, and API testing with Postman to validate endpoint functionality, data integrity, and system performance.</p></div></div>
+    </div>
+  </div>
+</section>
+<section id="publications-legacy" style="display:none">
+  <div class="container">
+    <div class="section-header fade-in"><span class="overline">Academic Output</span><h2>Research &amp; Publications</h2><p>Peer-reviewed contributions across IEEE, IJECE, and international venues.</p></div>
     <div class="pub-tabs fade-in">
       <button class="pub-tab active" onclick="switchTab('all',this)">All</button>
       <button class="pub-tab" onclick="switchTab('conf',this)">Conference</button>
@@ -403,6 +438,10 @@
       <div class="pub-card pub-hidden fade-in"><div class="pub-badge">S.3<br/>2026</div><div class="pub-info"><h4>Reasoning Drift in Compressed Transformers: An Explainability Analysis of BERT, DistilBERT, and TinyBERT</h4><p class="pub-authors">Samin Yasir, <strong>Nur-E Sarjina Khan</strong>, Saumyadip Das et al.</p><p class="pub-meta">Submitted to IJMECS</p><div class="pub-chips"><span class="chip review">Under Review</span><span class="chip">BERT</span><span class="chip">XAI</span></div></div></div>
       <div class="pub-card pub-hidden fade-in"><div class="pub-badge">S.4<br/>2026</div><div class="pub-info"><h4>HCNT-Net: An Explainable Hybrid ConvNeXt-Transformer Framework for Robust Rice Disease Classification via Cross-Dataset Analysis</h4><p class="pub-authors"><strong>Nur-E Sarjina Khan</strong>, Saumyadip Das et al.</p><p class="pub-meta">Submitted to IEEE ICEFronT 2026</p><div class="pub-chips"><span class="chip review">Under Review</span><span class="chip">ConvNeXt</span><span class="chip">XAI</span></div></div></div>
       <div class="pub-card pub-hidden fade-in"><div class="pub-badge">S.5<br/>2026</div><div class="pub-info"><h4>A Joint CLAHE-Enhanced CNN-Transformer Framework for Imbalanced Nail Disease Classification</h4><p class="pub-authors">Raiyan Bin Alam, Saumyadip Das, <strong>Nur-E Sarjina Khan</strong> et al.</p><p class="pub-meta">Submitted to IEEE ICEFronT 2026</p><div class="pub-chips"><span class="chip review">Under Review</span><span class="chip">Medical AI</span><span class="chip">CNN</span></div></div></div>
+      <div class="pub-card pub-hidden"><div class="pub-badge">C.1<br/>2026</div><div class="pub-info"><h4>CNeT-Rice: An Explainable Hybrid ConvNeXt-Transformer Network for Rice Disease Classification via Cross-Dataset Evaluation</h4><p class="pub-meta">SPICSCON 2026 · IEEE · Natore, Bangladesh · Presented 13 August 2026</p><div class="pub-chips"><span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span><span class="pub-link-btn">Indexing Soon</span></div></div></div>
+      <div class="pub-card pub-hidden"><div class="pub-badge">C.4<br/>2026</div><div class="pub-info"><h4>DARENet: A Lightweight CNN-Transformer Framework for Resource-Constrained IoT-Based Aerial Object Classification</h4><p class="pub-meta">MARSCON 2026 · IEEE · Dhaka, Bangladesh · Presented 14 August 2026</p><div class="pub-chips"><span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span><span class="pub-link-btn">Indexing Soon</span></div></div></div>
+      <div class="pub-card pub-hidden"><div class="pub-badge">C.5<br/>2026</div><div class="pub-info"><h4>SeedConv-XG: An RGB-Based Framework for Soybean Seed Infestation Classification and Pseudo-Mask-Guided Severity Approximation</h4><p class="pub-meta">COMPAS 2026 · IEEE · University of Dhaka · Presented</p><div class="pub-chips"><span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span><span class="pub-link-btn">Indexing Soon</span></div></div></div>
+      <div class="pub-card pub-hidden"><div class="pub-badge">C.6<br/>2026</div><div class="pub-info"><h4>An Explainable CLAHE-Enhanced Hybrid CNN-Transformer Framework for Nail Disease Classification</h4><p class="pub-meta">SPICSCON 2026 · IEEE · Natore, Bangladesh · Presented 13 August 2026</p><div class="pub-chips"><span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span><span class="pub-link-btn">Indexing Soon</span></div></div></div>
       <div class="show-more-wrap">
         <button class="show-more-btn" id="showMoreBtn" onclick="showMorePubs()">Show More ↓</button>
         <button class="show-less-btn" id="showLessBtn" style="display:none;" onclick="showLessPubs()">Show Less ↑</button>
@@ -413,10 +452,21 @@
       <div class="pub-card fade-in"><div class="pub-badge">C.2<br/>2026</div><div class="pub-info"><h4>A Comparison of State-Space Model and CNN Baselines: MambaOut-tiny vs. ResNet-50 and MobileNetV2 for Rice Leaf Disease Classification</h4><p class="pub-authors"><strong>Nur-E Sarjina Khan</strong>, Saumyadip Das, Sazia Sharmin, Kamruddin Nur</p><p class="pub-meta">QPAIN 2026 · IEEE · 17 April 2026, Chattogram</p><div class="pub-chips"><span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span></div></div></div>
       <div class="pub-card fade-in"><div class="pub-badge">C.3<br/>2025</div><div class="pub-info"><h4>SoilSense: An IoT-Based Soil Health Monitoring System for Smallholder Farmers in Bangladesh</h4><p class="pub-authors">Saumyadip Das, <strong>Nur-E Sarjina Khan</strong> et al.</p><p class="pub-meta">EICT 2025 · IEEE · December 2025, Khulna</p><div class="pub-chips"><span class="chip ieee">IEEE Xplore</span><span class="chip accepted">✓ Published</span><a href="https://doi.org/10.1109/EICT68394.2025.11355612" target="_blank" class="pub-link-btn"><i class="fa fa-external-link-alt"></i> DOI</a></div></div></div>
     </div>
+      <div class="pub-card fade-in"><div class="pub-badge">C.1<br/>2026</div><div class="pub-info"><h4>CNeT-Rice: An Explainable Hybrid ConvNeXt-Transformer Network for Rice Disease Classification via Cross-Dataset Evaluation</h4><p class="pub-meta">SPICSCON 2026 · IEEE · Natore, Bangladesh · Presented 13 August 2026</p><div class="pub-chips"><span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span><span class="pub-link-btn">Indexing Soon</span></div></div></div>
+      <div class="pub-card fade-in"><div class="pub-badge">C.4<br/>2026</div><div class="pub-info"><h4>DARENet: A Lightweight CNN-Transformer Framework for Resource-Constrained IoT-Based Aerial Object Classification</h4><p class="pub-meta">MARSCON 2026 · IEEE · Dhaka, Bangladesh · Presented 14 August 2026</p><div class="pub-chips"><span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span><span class="pub-link-btn">Indexing Soon</span></div></div></div>
+      <div class="pub-card fade-in"><div class="pub-badge">C.5<br/>2026</div><div class="pub-info"><h4>SeedConv-XG: An RGB-Based Framework for Soybean Seed Infestation Classification and Pseudo-Mask-Guided Severity Approximation</h4><p class="pub-meta">COMPAS 2026 · IEEE · University of Dhaka · Presented</p><div class="pub-chips"><span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span><span class="pub-link-btn">Indexing Soon</span></div></div></div>
+      <div class="pub-card fade-in"><div class="pub-badge">C.6<br/>2026</div><div class="pub-info"><h4>An Explainable CLAHE-Enhanced Hybrid CNN-Transformer Framework for Nail Disease Classification</h4><p class="pub-meta">SPICSCON 2026 · IEEE · Natore, Bangladesh · Presented 13 August 2026</p><div class="pub-chips"><span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span><span class="pub-link-btn">Indexing Soon</span></div></div></div>
     <div class="pub-list" id="tab-journal">
       <div class="pub-card fade-in"><div class="pub-badge">J.1<br/>2026</div><div class="pub-info"><h4>The Ethics of AI Technology in Academic Work: Assessing the Line Between Assistance and Plagiarism</h4><p class="pub-authors">Md. Owafeeuzzaman Patwary, Abtahi Islam, <strong>Nur-E Sarjina Khan</strong> et al.</p><p class="pub-meta">IJECE · Vol. 16, Issue 2, pp. 924–944 · 2026</p><div class="pub-chips"><span class="chip journal">IJECE Journal</span><span class="chip accepted">✓ Published</span><a href="https://doi.org/10.11591/ijece.v16i2.pp924-944" target="_blank" class="pub-link-btn"><i class="fa fa-external-link-alt"></i> DOI</a></div></div></div>
     </div>
     <div class="pub-list" id="tab-review">
+      <div class="pub-card"><div class="pub-badge">S.1<br/>2026</div><div class="pub-info"><h4>DP-CATNet: A Disease-Prototype-Conditioned Cross-Attention Network for Pulmonary Disease Classification</h4><p class="pub-meta">Submitted to IEEE Access</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
+      <div class="pub-card"><div class="pub-badge">S.2<br/>2026</div><div class="pub-info"><h4>SensorShield-Net: Toward Scanner-Agnostic Brain Tumor Classification via Cross-Attention Fusion and CCA-MMD</h4><p class="pub-meta">Submitted to IEEE Access</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
+      <div class="pub-card"><div class="pub-badge">S.3<br/>2026</div><div class="pub-info"><h4>AI-Enabled Convergence in Next-Generation Diagnostic Imaging: Convergence Across PET/MRI, POCUS, and Radiomics</h4><p class="pub-meta">Submitted to Frontiers in Radiology</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
+      <div class="pub-card"><div class="pub-badge">S.4<br/>2026</div><div class="pub-info"><h4>BEST: BanglaBERT-MuRIL Ensemble with Calibration and Explainability for Bengali Healthcare Severity Triage</h4><p class="pub-meta">Submitted to IEEE ICCIT 2026</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
+      <div class="pub-card"><div class="pub-badge">S.5<br/>2026</div><div class="pub-info"><h4>A Modality-Specific Benchmarking Framework for Road Traffic Monitoring Using YOLOv8n and YOLOv12m</h4><p class="pub-meta">Submitted to IEEE ICCIT 2026</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
+      <div class="pub-card"><div class="pub-badge">S.6<br/>2026</div><div class="pub-info"><h4>TechLay-X: An XAI-Based ML Framework for Layoff-Risk Prediction in the Technology Industry</h4><p class="pub-meta">Submitted to IEEE QPAIN 2027</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
+      <div class="pub-card"><div class="pub-badge">S.7<br/>2027</div><div class="pub-info"><h4>HGAT-XGB: Hierarchical Group-Aware Attention with XGBoost for Clinical Tabular Prediction Across Multiple Disease Domains</h4><p class="pub-meta">Submitted to IEEE ECCE-2027</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
       <div class="pub-card fade-in"><div class="pub-badge">S.1<br/>2026</div><div class="pub-info"><h4>DARENet: A Lightweight CNN-Transformer Framework for Resource-Constrained IoT-Based Aerial Object Classification</h4><p class="pub-authors"><strong>Nur-E Sarjina Khan</strong>, Saumyadip Das, Muhammad Firoz Mridha</p><p class="pub-meta">Submitted to IEEE MARSCON 2026</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
       <div class="pub-card fade-in"><div class="pub-badge">S.2<br/>2026</div><div class="pub-info"><h4>LLM-Driven Cardiovascular Disease Risk Prediction and the Predominant Influence of Smoking</h4><p class="pub-authors">Ranak Debnath, Ariful Islam, <strong>Nur-E Sarjina Khan</strong>, Saumyadip Das et al.</p><p class="pub-meta">Submitted to IET Information Security</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
       <div class="pub-card fade-in"><div class="pub-badge">S.3<br/>2026</div><div class="pub-info"><h4>Reasoning Drift in Compressed Transformers: An Explainability Analysis of BERT, DistilBERT, and TinyBERT</h4><p class="pub-authors">Samin Yasir, <strong>Nur-E Sarjina Khan</strong>, Saumyadip Das et al.</p><p class="pub-meta">Submitted to IJMECS</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
@@ -425,10 +475,53 @@
     </div>
   </div>
 </section>
+<section id="publications">
+  <div class="container">
+    <div class="section-header fade-in"><span class="overline">Academic Output</span><h2>Research &amp; Publications</h2><p>Peer-reviewed contributions across IEEE, IJECE, and international venues.</p></div>
+    <div class="pub-tabs fade-in">
+      <button class="pub-tab active" onclick="switchCleanTab('clean-all',this)">All (16)</button><button class="pub-tab" onclick="switchCleanTab('clean-conf',this)">Conference (7)</button><button class="pub-tab" onclick="switchCleanTab('clean-journal',this)">Journal (1)</button><button class="pub-tab" onclick="switchCleanTab('clean-review',this)">Under Review (7)</button><button class="pub-tab" onclick="switchCleanTab('clean-thesis',this)">Thesis (1)</button>
+    </div>
+    <div class="pub-list active" id="clean-all">
+      <div class="pub-card"><div class="pub-badge">C.2<br/>2026</div><div class="pub-info"><h4>Decoding Rider Risk: A Behavioral Archetype and XAI-Driven Approach to Predict Motorcycle Accident Severity</h4><p class="pub-authors"><strong>Nur-E Sarjina Khan</strong>, Saumyadip Das, Muhammad Hasibur Rashid Chayon</p><p class="pub-meta">ICCSCE 2026 · IEEE · Penang, Malaysia · 28 June 2026</p><div class="pub-chips"><span class="chip ieee">IEEE</span><span class="chip accepted">✓ Published</span><a href="https://doi.org/10.1109/ICCSCE69880.2026.11750469" target="_blank" class="pub-link-btn">DOI</a></div></div></div>
+      <div class="pub-card"><div class="pub-badge">C.3<br/>2026</div><div class="pub-info"><h4>A Comparison of State-Space Model and CNN Baselines: MambaOut-tiny vs. ResNet-50 and MobileNetV2 for Rice Leaf Disease Classification</h4><p class="pub-authors"><strong>Nur-E Sarjina Khan</strong>, Saumyadip Das, Sazia Sharmin, Kamruddin Nur</p><p class="pub-meta">QPAIN 2026 · IEEE · Chattogram, Bangladesh · 16–18 April 2026</p><div class="pub-chips"><span class="chip ieee">IEEE</span><span class="chip accepted">✓ Published</span><a href="https://doi.org/10.1109/QPAIN69676.2026.11545564" target="_blank" class="pub-link-btn">DOI</a></div></div></div>
+      <div class="pub-card"><div class="pub-badge">C.7<br/>2025</div><div class="pub-info"><h4>SoilSense: An IoT-Based Soil Health Monitoring System for Smallholder Farmers in Bangladesh to Support Sustainable Agriculture</h4><p class="pub-meta">EICT 2025 · IEEE · Khulna, Bangladesh · 18–20 December 2025</p><div class="pub-chips"><span class="chip ieee">IEEE Xplore</span><span class="chip accepted">✓ Published</span><a href="https://doi.org/10.1109/EICT68394.2025.11355612" target="_blank" class="pub-link-btn">DOI</a></div></div></div>
+      <div class="pub-card"><div class="pub-badge">J.1<br/>2026</div><div class="pub-info"><h4>The Ethics of AI Technology in Academic Work: Assessing the Line Between Assistance and Plagiarism</h4><p class="pub-meta">IJECE · Vol. 16, Issue 2, pp. 924–944 · 2026</p><div class="pub-chips"><span class="chip journal">IJECE Journal</span><span class="chip accepted">✓ Published</span><a href="https://doi.org/10.11591/ijece.v16i2.pp924-944" target="_blank" class="pub-link-btn">DOI</a></div></div></div>
+      <div class="pub-card clean-extra"><div class="pub-badge">C.1<br/>2026</div><div class="pub-info"><h4>CNeT-Rice: An Explainable Hybrid ConvNeXt-Transformer Network for Rice Disease Classification via Cross-Dataset Evaluation</h4><p class="pub-meta">SPICSCON 2026 · IEEE · Natore, Bangladesh · Presented 13 August 2026</p><div class="pub-chips"><span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span><span class="pub-link-btn">Indexing Soon</span></div></div></div>
+      <div class="pub-card clean-extra"><div class="pub-badge">C.4<br/>2026</div><div class="pub-info"><h4>DARENet: A Lightweight CNN-Transformer Framework for Resource-Constrained IoT-Based Aerial Object Classification</h4><p class="pub-meta">MARSCON 2026 · IEEE · Dhaka, Bangladesh · Presented 14 August 2026</p><div class="pub-chips"><span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span><span class="pub-link-btn">Indexing Soon</span></div></div></div>
+      <div class="pub-card clean-extra"><div class="pub-badge">C.5<br/>2026</div><div class="pub-info"><h4>SeedConv-XG: An RGB-Based Framework for Soybean Seed Infestation Classification and Pseudo-Mask-Guided Severity Approximation</h4><p class="pub-meta">COMPAS 2026 · IEEE · University of Dhaka · Presented</p><div class="pub-chips"><span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span><span class="pub-link-btn">Indexing Soon</span></div></div></div>
+      <div class="pub-card clean-extra"><div class="pub-badge">C.6<br/>2026</div><div class="pub-info"><h4>An Explainable CLAHE-Enhanced Hybrid CNN-Transformer Framework for Nail Disease Classification</h4><p class="pub-meta">SPICSCON 2026 · IEEE · Natore, Bangladesh · Presented 13 August 2026</p><div class="pub-chips"><span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span><span class="pub-link-btn">Indexing Soon</span></div></div></div>
+      <div class="pub-card clean-extra"><div class="pub-badge">T.1<br/>2026</div><div class="pub-info"><h4>AgentOpt: Telemetry-Calibrated Cost Modeling and Multi-Objective Scheduling for Agentic AI Workflow on Heterogeneous Systems</h4><p class="pub-meta">Undergraduate Thesis · Defended</p><div class="pub-chips"><span class="chip accepted">✓ Defended</span><span class="chip">Agentic AI</span></div></div></div>
+      <div class="pub-card clean-extra"><div class="pub-badge">S.1<br/>2026</div><div class="pub-info"><h4>DP-CATNet: A Disease-Prototype-Conditioned Cross-Attention Network for Pulmonary Disease Classification</h4><p class="pub-meta">Submitted to IEEE Access</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
+      <div class="pub-card clean-extra"><div class="pub-badge">S.2<br/>2026</div><div class="pub-info"><h4>SensorShield-Net: Toward Scanner-Agnostic Brain Tumor Classification via Cross-Attention Fusion and CCA-MMD</h4><p class="pub-meta">Submitted to IEEE Access</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
+      <div class="pub-card clean-extra"><div class="pub-badge">S.3<br/>2026</div><div class="pub-info"><h4>AI-Enabled Convergence in Next-Generation Diagnostic Imaging: Convergence Across PET/MRI, POCUS, and Radiomics</h4><p class="pub-meta">Submitted to Frontiers in Radiology</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
+      <div class="pub-card clean-extra"><div class="pub-badge">S.4<br/>2026</div><div class="pub-info"><h4>BEST: BanglaBERT-MuRIL Ensemble with Calibration and Explainability for Bengali Healthcare Severity Triage</h4><p class="pub-meta">Submitted to IEEE ICCIT 2026</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
+      <div class="pub-card clean-extra"><div class="pub-badge">S.7<br/>2026</div><div class="pub-info"><h4>A Modality-Specific Benchmarking Framework for Road Traffic Monitoring Using YOLOv8n and YOLOv12m</h4><p class="pub-meta">Submitted to IEEE ICCIT 2026</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
+      <div class="pub-card clean-extra"><div class="pub-badge">S.8<br/>2026</div><div class="pub-info"><h4>TechLay-X: An XAI-Based ML Framework for Layoff-Risk Prediction in the Technology Industry</h4><p class="pub-meta">Submitted to IEEE QPAIN 2027</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
+      <div class="pub-card clean-extra"><div class="pub-badge">S.9<br/>2027</div><div class="pub-info"><h4>HGAT-XGB: Hierarchical Group-Aware Attention with XGBoost for Clinical Tabular Prediction Across Multiple Disease Domains</h4><p class="pub-meta">Submitted to IEEE ECCE-2027</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>
+      <div class="show-more-wrap"><button class="show-more-btn" onclick="document.querySelectorAll('#clean-all .clean-extra').forEach(x=>x.style.display='flex');this.style.display='none';document.getElementById('cleanShowLess').style.display='inline-block';">Show More ↓</button><button class="show-less-btn" id="cleanShowLess" style="display:none" onclick="document.querySelectorAll('#clean-all .clean-extra').forEach(x=>x.style.display='none');this.style.display='none';document.querySelector('#clean-all .show-more-btn').style.display='inline-block';">Show Less ↑</button></div>
+    </div>
+    <div class="pub-list" id="clean-conf">
+      <div class="pub-card"><div class="pub-badge">C.1<br/>2026</div><div class="pub-info"><h4>CNeT-Rice: An Explainable Hybrid ConvNeXt-Transformer Network for Rice Disease Classification via Cross-Dataset Evaluation</h4><p class="pub-meta">SPICSCON 2026 · IEEE · Natore, Bangladesh · Presented 13 August 2026</p><div class="pub-chips"><span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span><span class="pub-link-btn">Indexing Soon</span></div></div></div>
+      <div class="pub-card"><div class="pub-badge">C.2<br/>2026</div><div class="pub-info"><h4>Decoding Rider Risk: A Behavioral Archetype and XAI-Driven Approach to Predict Motorcycle Accident Severity</h4><p class="pub-meta">ICCSCE 2026 · IEEE · Penang, Malaysia · Published · DOI</p></div></div>
+      <div class="pub-card"><div class="pub-badge">C.3<br/>2026</div><div class="pub-info"><h4>A Comparison of State-Space Model and CNN Baselines: MambaOut-tiny vs. ResNet-50 and MobileNetV2 for Rice Leaf Disease Classification</h4><p class="pub-meta">QPAIN 2026 · IEEE · Published · DOI</p></div></div>
+      <div class="pub-card"><div class="pub-badge">C.4<br/>2026</div><div class="pub-info"><h4>DARENet: A Lightweight CNN-Transformer Framework for Resource-Constrained IoT-Based Aerial Object Classification</h4><p class="pub-meta">MARSCON 2026 · IEEE · Presented · Indexing Soon</p></div></div>
+      <div class="pub-card"><div class="pub-badge">C.5<br/>2026</div><div class="pub-info"><h4>SeedConv-XG: An RGB-Based Framework for Soybean Seed Infestation Classification and Pseudo-Mask-Guided Severity Approximation</h4><p class="pub-meta">COMPAS 2026 · IEEE · Presented · Indexing Soon</p></div></div>
+      <div class="pub-card"><div class="pub-badge">C.6<br/>2026</div><div class="pub-info"><h4>An Explainable CLAHE-Enhanced Hybrid CNN-Transformer Framework for Nail Disease Classification</h4><p class="pub-meta">SPICSCON 2026 · IEEE · Presented · Indexing Soon</p></div></div>
+      <div class="pub-card"><div class="pub-badge">C.7<br/>2025</div><div class="pub-info"><h4>SoilSense: An IoT-Based Soil Health Monitoring System for Smallholder Farmers in Bangladesh to Support Sustainable Agriculture</h4><p class="pub-meta">EICT 2025 · IEEE · Published · DOI</p></div></div>
+    </div>
+    <div class="pub-list" id="clean-journal"><div class="pub-card"><div class="pub-badge">J.1<br/>2026</div><div class="pub-info"><h4>The Ethics of AI Technology in Academic Work: Assessing the Line Between Assistance and Plagiarism</h4><p class="pub-meta">IJECE · Published · DOI</p></div></div></div>
+    <div class="pub-list" id="clean-thesis"><div class="pub-card"><div class="pub-badge">T.1<br/>2026</div><div class="pub-info"><h4>AgentOpt: Telemetry-Calibrated Cost Modeling and Multi-Objective Scheduling for Agentic AI Workflow on Heterogeneous Systems</h4><p class="pub-meta">Undergraduate Thesis · Defended</p><div class="pub-chips"><span class="chip accepted">✓ Defended</span><span class="chip">Agentic AI</span></div></div></div></div>
+    <div class="pub-list" id="clean-review"><div class="pub-card"><div class="pub-badge">S.1<br/>2026</div><div class="pub-info"><h4>DP-CATNet: A Disease-Prototype-Conditioned Cross-Attention Network for Pulmonary Disease Classification</h4><p class="pub-meta">Submitted to IEEE Access</p></div></div><div class="pub-card"><div class="pub-badge">S.2<br/>2026</div><div class="pub-info"><h4>SensorShield-Net: Toward Scanner-Agnostic Brain Tumor Classification via Cross-Attention Fusion and CCA-MMD</h4><p class="pub-meta">Submitted to IEEE Access</p></div></div><div class="pub-card"><div class="pub-badge">S.3<br/>2026</div><div class="pub-info"><h4>AI-Enabled Convergence in Next-Generation Diagnostic Imaging: Convergence Across PET/MRI, POCUS, and Radiomics</h4><p class="pub-meta">Submitted to Frontiers in Radiology</p></div></div><div class="pub-card"><div class="pub-badge">S.4<br/>2026</div><div class="pub-info"><h4>BEST: BanglaBERT-MuRIL Ensemble with Calibration and Explainability for Bengali Healthcare Severity Triage</h4><p class="pub-meta">Submitted to IEEE ICCIT 2026</p></div></div><div class="pub-card"><div class="pub-badge">S.7<br/>2026</div><div class="pub-info"><h4>A Modality-Specific Benchmarking Framework for Road Traffic Monitoring Using YOLOv8n and YOLOv12m</h4><p class="pub-meta">Submitted to IEEE ICCIT 2026</p></div></div><div class="pub-card"><div class="pub-badge">S.8<br/>2026</div><div class="pub-info"><h4>TechLay-X: An XAI-Based ML Framework for Layoff-Risk Prediction in the Technology Industry</h4><p class="pub-meta">Submitted to IEEE QPAIN 2027</p></div></div><div class="pub-card"><div class="pub-badge">S.9<br/>2027</div><div class="pub-info"><h4>HGAT-XGB: Hierarchical Group-Aware Attention with XGBoost for Clinical Tabular Prediction Across Multiple Disease Domains</h4><p class="pub-meta">Submitted to IEEE ECCE-2027</p></div></div></div>
+  </div>
+</section>
+<script>function switchCleanTab(id,btn){document.querySelectorAll('#publications .pub-tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('#publications .pub-list').forEach(x=>x.classList.remove('active'));btn.classList.add('active');document.getElementById(id).classList.add('active');}</script>
 <section id="projects">
   <div class="container">
     <div class="section-header fade-in"><span class="overline">What I Build</span><h2>Projects</h2></div>
     <div class="projects-grid">
+      <div class="project-card fade-in"><div class="project-top"><div class="project-icon">AS</div><span class="project-status">Completed</span></div><div class="project-body"><h3>Modern AgeStudio — Architecture Portfolio &amp; CMS Platform</h3><p class="project-date">August 2026</p><p>Built a type-safe, full-stack portfolio platform for a multidisciplinary architecture studio with Sanity CMS, Firebase Auth, and Cloudflare Workers edge deployment.</p><div class="project-footer"><div class="project-tools"><span class="tool-tag">Next.js</span><span class="tool-tag">React</span><span class="tool-tag">TypeScript</span><span class="tool-tag">Sanity CMS</span></div><div class="project-links"><a href="https://modernagestudio.com" target="_blank" class="proj-link">Live Site</a></div></div></div></div>
+      <div class="project-card fade-in"><div class="project-top"><div class="project-icon">SB</div><span class="project-status wip">Ongoing</span></div><div class="project-body"><h3>SellerBot: AI-Powered POS &amp; Invoice Automation for F-Commerce Sellers</h3><p class="project-date">May 2025 — Ongoing</p><p>Built a mobile-first PWA for automated F-commerce order processing using a RAG pipeline with Groq API, Cohere multilingual embeddings, and multi-tenant Firestore storage.</p><div class="project-footer"><div class="project-tools"><span class="tool-tag">React</span><span class="tool-tag">Vite</span><span class="tool-tag">Firebase</span><span class="tool-tag">Groq API</span></div><div class="project-links"><a href="https://seller-bot-sand.vercel.app" target="_blank" class="proj-link">Live Site</a></div></div></div></div>
+      <div class="project-card fade-in"><div class="project-top"><div class="project-icon">ROBO</div><span class="project-status">Completed</span></div><div class="project-body"><h3>ROBO: Multimodal Tangible Interface for Robotic Pan-Tilt Control</h3><p class="project-date">May 2025 — June 2025</p><p>Built a controller-free robotic pan-tilt system using real-time bimanual hand gestures and voice commands via smartphone browser with ESP32 WebSocket communication.</p><div class="project-footer"><div class="project-tools"><span class="tool-tag">MediaPipe.js</span><span class="tool-tag">ESP32 MicroPython</span><span class="tool-tag">WebSocket</span><span class="tool-tag">JavaScript</span></div><div class="project-links"><a href="https://github.com/sarjinkhan2003/Robo-Controller" target="_blank" class="proj-link"><i class="fab fa-github"></i> Code</a></div></div></div></div>
       <div class="project-card fade-in"><div class="project-top"><div class="project-icon">📖</div><span class="project-status wip">In Progress</span></div><div class="project-body"><h3>DocReader BD</h3><p>Intelligent Bangla document reading system using OCR and transformer-based NLP to extract and comprehend text from scanned documents. Targeting 100M+ Bengali-speaking users.</p><div class="project-footer"><div class="project-tools"><span class="tool-tag">Python</span><span class="tool-tag">Transformers</span><span class="tool-tag">OCR</span></div><div class="project-links"></div></div></div></div>
       <div class="project-card fade-in"><div class="project-top"><div class="project-icon">🔤</div><span class="project-status wip">In Progress</span></div><div class="project-body"><h3>Bangla Lemmatizer</h3><p>Novel Bangla lemmatizer using English-subsidiary cross-lingual morphological mappings. Addresses a critical gap in Bangla NLP with a lexicon database and web interface.</p><div class="project-footer"><div class="project-tools"><span class="tool-tag">Python</span><span class="tool-tag">NLTK</span><span class="tool-tag">MySQL</span></div><div class="project-links"></div></div></div></div>
       <div class="project-card fade-in"><div class="project-top"><div class="project-icon">🌾</div><span class="project-status">Published</span></div><div class="project-body"><h3>Rice Disease Detection (MambaOut)</h3><p>State-space model vs CNN comparison for rice leaf disease classification. Published at IEEE QPAIN 2026.</p><div class="project-footer"><div class="project-tools"><span class="tool-tag">PyTorch</span><span class="tool-tag">MambaOut</span><span class="tool-tag">CNN</span></div><div class="project-links"></div></div></div></div>
@@ -438,6 +531,7 @@
       <div class="project-card fade-in"><div class="project-top"><div class="project-icon">🏠</div><span class="project-status">Completed</span></div><div class="project-body"><h3>Real Estate Management System</h3><p>Scalable .NET desktop app for property portfolio management with automated reporting and role-based access control.</p><div class="project-footer"><div class="project-tools"><span class="tool-tag">C#</span><span class="tool-tag">.NET</span><span class="tool-tag">MSSQL</span></div><div class="project-links"><a href="https://github.com/sarjinkhan2003/Real-Estate-Management-System-.NET-Framework-C-" target="_blank" class="proj-link"><i class="fab fa-github"></i> Code</a></div></div></div></div>
       <div class="project-card fade-in"><div class="project-top"><div class="project-icon">🏥</div><span class="project-status">Completed</span></div><div class="project-body"><h3>Doctor Appointment System</h3><p>Normalised 3NF relational database with JDBC for appointment scheduling and doctor-patient records.</p><div class="project-footer"><div class="project-tools"><span class="tool-tag">Oracle SQL</span><span class="tool-tag">JDBC</span></div><div class="project-links"><a href="https://github.com/sarjinkhan2003/Doctor-Appointment-Management-System-Oracle-DB-" target="_blank" class="proj-link"><i class="fab fa-github"></i> Code</a></div></div></div></div>
       <div class="project-card fade-in"><div class="project-top"><div class="project-icon">🛍️</div><span class="project-status">Completed</span></div><div class="project-body"><h3>Gadget Shop Management System</h3><p>Retail inventory application using Java Swing and CRUD operations for real-time stock tracking and sales processing.</p><div class="project-footer"><div class="project-tools"><span class="tool-tag">Java Swing</span></div><div class="project-links"><a href="https://github.com/sarjinkhan2003/Gadget-Shop-Management-System" target="_blank" class="proj-link"><i class="fab fa-github"></i> Code</a></div></div></div></div>
+      <div class="project-card fade-in"><div class="project-top"><div class="project-icon">M</div><span class="project-status">Published</span></div><div class="project-body"><h3>Rice Disease Detection (MambaOut)</h3><p class="project-date">QPAIN 2026</p><p>State-space model versus CNN comparison for rice leaf disease classification, published at IEEE QPAIN 2026.</p><div class="project-footer"><div class="project-tools"><span class="tool-tag">PyTorch</span><span class="tool-tag">MambaOut</span><span class="tool-tag">CNN</span></div><div class="project-links"><a href="https://doi.org/10.1109/QPAIN69676.2026.11545564" target="_blank" class="proj-link">DOI</a></div></div></div></div>
     </div>
   </div>
 </section>
@@ -488,6 +582,23 @@
     </div>
   </div>
 </section>
+<section id="additional-info">
+  <div class="container">
+    <div class="section-header fade-in"><span class="overline">Beyond the Curriculum</span><h2>More</h2></div>
+    <div class="additional-grid">
+      <div class="additional-card fade-in">
+        <h3>Memberships</h3>
+        <p>• IEEE Student Member</p>
+        <p>• ACES Member</p>
+      </div>
+      <div class="additional-card fade-in">
+        <h3>Professional Activities</h3>
+        <p><strong>Attended ICCSCE 2026 — Malaysia</strong></p>
+        <p>Physically attended the conference in Penang, Malaysia, where I met researchers and authors from different countries and regions, exchanged ideas, and learned diverse perspectives through a valuable academic experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
 <section id="contact">
   <div class="container">
     <div class="section-header fade-in"><span class="overline">Let's Connect</span><h2>Get in Touch</h2><p>Open to research collaborations, academic discussions, and opportunities.</p></div>
@@ -496,10 +607,10 @@
         <h3>Let's Work Together</h3>
         <p>Whether you're interested in research collaboration, have questions about my work, or want to discuss AI opportunities — I'd love to hear from you.</p>
         <div class="contact-details">
-          <div class="contact-item"><div class="contact-item-icon">✉</div><span><a href="mailto:khan.sarjin.cse@gmail.com">khan.sarjin.cse@gmail.com</a></span></div>
+          <div class="contact-item"><div class="contact-item-icon">✉</div><span><a href="mailto:khan.sarjin.cse@gmail.com">khan.sarjin.cse@gmail.com</a></span></div><div class="contact-item"><div class="contact-item-icon">☎</div><span><a href="tel:+8801515621186">+880 1515-621186</a></span></div>
           <div class="contact-item"><div class="contact-item-icon">📍</div><span>Uttara, Dhaka-1230, Bangladesh</span></div>
           <div class="contact-item"><div class="contact-item-icon">🔗</div><span><a href="https://sarjinkhan2003.github.io" target="_blank">sarjinkhan2003.github.io</a></span></div>
-          <div class="contact-item"><div class="contact-item-icon"><i class="fab fa-linkedin-in" style="font-size:.82rem;"></i></div><span><a href="https://www.linkedin.com/in/nur-e-sarjina-khan" target="_blank">linkedin.com/in/nur-e-sarjina-khan</a></span></div>
+          <div class="contact-item"><div class="contact-item-icon"><i class="fab fa-linkedin-in" style="font-size:.82rem;"></i></div><span><a href="https://www.linkedin.com/in/nur-e-sarjina-khan" target="_blank">linkedin.com/in/nur-e-sarjina-khan</a></span></div><div class="contact-item"><div class="contact-item-icon"><i class="fab fa-orcid" style="font-size:.82rem;"></i></div><span><a href="https://orcid.org/0009-0008-8241-4624" target="_blank">orcid.org/0009-0008-8241-4624</a></span></div>
         </div>
       </div>
       <div class="contact-form fade-in">
@@ -533,6 +644,7 @@
       <a href="https://github.com/sarjinkhan2003" target="_blank">GitHub</a>
       <a href="https://scholar.google.com/citations?user=61wlY98AAAAJ&hl=en" target="_blank">Google Scholar</a>
       <a href="https://www.researchgate.net/profile/Nur-E-Khan-2" target="_blank">ResearchGate</a>
+      <a href="https://orcid.org/0009-0008-8241-4624" target="_blank">ORCID</a>
       <a href="mailto:khan.sarjin.cse@gmail.com">Email</a>
     </div>
     <p style="margin-top:1.3rem;font-size:.68rem;">© 2026 Nur-E Sarjina Khan · Built with care</p>
@@ -584,6 +696,333 @@
   async function loadViewCount(){try{let c=parseInt(localStorage.getItem('vc_sarjin')||'0');c++;localStorage.setItem('vc_sarjin',c);document.getElementById('viewCount').textContent=c>999?(Math.floor(c/100)*100).toLocaleString()+'+':c.toLocaleString();}catch(e){document.getElementById('viewCount').textContent='—';}}
   loadViewCount();
   const sections=document.querySelectorAll('section[id]');const navLinks=document.querySelectorAll('.nav-links a');window.addEventListener('scroll',()=>{let cur='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});navLinks.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--accent2)':'';});},{passive:true});
+</script>
+<script>
+  (() => {
+    const pubData = [
+      ['S.1','DP-CATNet: A Disease-Prototype-Conditioned Cross-Attention Network for Pulmonary Disease Classification','Submitted to IEEE Access'],
+      ['S.2','SensorShield-Net: Toward Scanner-Agnostic Brain Tumor Classification via Cross-Attention Fusion and CCA-MMD','Submitted to IEEE Access'],
+      ['S.3','AI-Enabled Convergence in Next-Generation Diagnostic Imaging: Convergence Across PET/MRI, POCUS, and Radiomics','Submitted to Frontiers in Radiology'],
+      ['S.4','BEST: BanglaBERT-MuRIL Ensemble with Calibration and Explainability for Bengali Healthcare Severity Triage','Submitted to IEEE ICCIT 2026'],
+      ['S.5','A Modality-Specific Benchmarking Framework for Road Traffic Monitoring Using YOLOv8n and YOLOv12m','Submitted to IEEE ICCIT 2026'],
+      ['S.6','TechLay-X: An XAI-Based ML Framework for Layoff-Risk Prediction in the Technology Industry','Submitted to IEEE QPAIN 2027'],
+      ['S.7','HGAT-XGB: Hierarchical Group-Aware Attention with XGBoost for Clinical Tabular Prediction Across Multiple Disease Domains','Submitted to IEEE ECCE-2027']
+    ];
+    const obsolete = ['LLM-Driven', 'Reasoning Drift', 'HCNT-Net:', 'A Joint CLAHE', 'DarkNetGuard-XAI:', 'TinySatNet:'];
+    document.querySelectorAll('#tab-all .pub-card,#tab-review .pub-card').forEach(card => { const t=card.querySelector('h4')?.textContent||''; if(obsolete.some(x=>t.includes(x))) card.remove(); });
+    document.querySelectorAll('#tab-review .pub-card').forEach(card=>{if((card.querySelector('h4')?.textContent||'').startsWith('DARENet:'))card.remove();});
+    const makeCard = ([badge,title,meta]) => `<div class="pub-card pub-hidden"><div class="pub-badge">${badge}<br/>2027</div><div class="pub-info"><h4>${title}</h4><p class="pub-meta">${meta}</p><div class="pub-chips"><span class="chip review">Under Review</span></div></div></div>`;
+    const all=document.querySelector('#tab-all'), review=document.querySelector('#tab-review');
+    if(all){const marker=all.querySelector('.show-more-wrap'); pubData.forEach(d=>marker?.insertAdjacentHTML('beforebegin',makeCard(d)));}
+    // Under-review entries are rendered directly in the HTML.
+    document.querySelectorAll('#tab-all .pub-card,#tab-conf .pub-card').forEach(card=>{
+      const t=card.querySelector('h4')?.textContent||'';
+      if(t.startsWith('Decoding Rider Risk:')){card.querySelector('.pub-chips').innerHTML='<span class="chip ieee">IEEE</span><span class="chip accepted">✓ Published</span><a href="https://doi.org/10.1109/ICCSCE69880.2026.11750469" target="_blank" class="pub-link-btn"><i class="fa fa-external-link-alt"></i> DOI</a>';}
+    });
+    document.querySelector('.section-header p')?.replaceChildren('Peer-reviewed contributions across IEEE, IJECE, and international venues.');
+    const stats=document.querySelectorAll('.hero-stats .stat-num'); if(stats.length>=4){stats[1].textContent='16';stats[2].textContent='11';stats[3].textContent='2';}
+    document.querySelectorAll('#tab-all .pub-card,#tab-conf .pub-card').forEach(card=>{const t=card.querySelector('h4')?.textContent||'';if(t.startsWith('A Comparison of State-Space Model'))card.querySelector('.pub-chips').innerHTML='<span class="chip ieee">IEEE</span><span class="chip accepted">✓ Published</span><a href="https://doi.org/10.1109/QPAIN69676.2026.11545564" target="_blank" class="pub-link-btn"><i class="fa fa-external-link-alt"></i> DOI</a>';});
+    const sections=document.querySelectorAll('section[id]'), links=document.querySelectorAll('.nav-links a,.mobile-menu a');
+    const updateNav=()=>{let cur='';sections.forEach(s=>{if(scrollY>=s.offsetTop-120)cur=s.id;});links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));}; addEventListener('scroll',updateNav,{passive:true}); updateNav();
+  })();
+</script>
+<script>
+  (() => {
+    const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const pub = (badge, title, meta, status, doi, authors='') => `<div class="pub-card"><div class="pub-badge">${badge}<br/>2026</div><div class="pub-info"><h4>${esc(title)}</h4>${authors ? `<p class="pub-authors">${authors}</p>` : ''}<p class="pub-meta">${esc(meta)}</p><div class="pub-chips">${status}${doi ? `<a href="${doi}" target="_blank" class="pub-link-btn"><i class="fa fa-external-link-alt"></i> DOI</a>` : ''}</div></div></div>`;
+    const published = '<span class="chip accepted">✓ Published</span>';
+    const presented = '<span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span><span class="pub-link-btn">Indexing Soon</span>';
+    const review = '<span class="chip review">Under Review</span>';
+    const cnet = pub('C.1','CNeT-Rice: An Explainable Hybrid ConvNeXt-Transformer Network for Rice Disease Classification via Cross-Dataset Evaluation','SPICSCON 2026 - IEEE - Natore, Bangladesh - Presented 13 August 2026',presented);
+    const decoding = pub('C.2','Decoding Rider Risk: A Behavioral Archetype and XAI-Driven Approach to Predict Motorcycle Accident Severity','ICCSCE 2026 - IEEE - Penang, Malaysia - 28 June 2026',published,'https://doi.org/10.1109/ICCSCE69880.2026.11750469','<strong>Nur-E Sarjina Khan</strong>, Saumyadip Das, Muhammad Hasibur Rashid Chayon');
+    const mamba = pub('C.3','A Comparison of State-Space Model and CNN Baselines: MambaOut-tiny vs. ResNet-50 and MobileNetV2 for Rice Leaf Disease Classification','QPAIN 2026 - IEEE - Chattogram, Bangladesh - 16-18 April 2026',published,'https://doi.org/10.1109/QPAIN69676.2026.11545564','<strong>Nur-E Sarjina Khan</strong>, Saumyadip Das, Sazia Sharmin, Kamruddin Nur');
+    const darenet = pub('C.4','DARENet: A Lightweight CNN-Transformer Framework for Resource-Constrained IoT-Based Aerial Object Classification','MARSCON 2026 - IEEE - Dhaka, Bangladesh - Presented 14 August 2026',presented);
+    const seed = pub('C.5','SeedConv-XG: An RGB-Based Framework for Soybean Seed Infestation Classification and Pseudo-Mask-Guided Severity Approximation','COMPAS 2026 - IEEE - University of Dhaka - Presented',presented);
+    const nail = pub('C.6','An Explainable CLAHE-Enhanced Hybrid CNN-Transformer Framework for Nail Disease Classification','SPICSCON 2026 - IEEE - Natore, Bangladesh - Presented 13 August 2026',presented);
+    const soil = pub('C.7','SoilSense: An IoT-Based Soil Health Monitoring System for Smallholder Farmers in Bangladesh to Support Sustainable Agriculture','EICT 2025 - IEEE - Khulna, Bangladesh - 18-20 December 2025',published,'https://doi.org/10.1109/EICT68394.2025.11355612','Saumyadip Das, <strong>Nur-E Sarjina Khan</strong> et al.');
+    const journal = pub('J.1','The Ethics of AI Technology in Academic Work: Assessing the Line Between Assistance and Plagiarism','IJECE - Vol. 16, Issue 2, pp. 924-944 - 2026','<span class="chip journal">IJECE Journal</span>'+published,'https://doi.org/10.11591/ijece.v16i2.pp924-944','Md. Owafeeuzzaman Patwary, Abtahi Islam, <strong>Nur-E Sarjina Khan</strong> et al.');
+    const thesis = pub('T.1','AgentOpt: Telemetry-Calibrated Cost Modeling and Multi-Objective Scheduling for Agentic AI Workflow on Heterogeneous Systems','Undergraduate Thesis - Defended','<span class="chip accepted">✓ Defended</span><span class="chip">Agentic AI</span>','', '<strong>Nur-E Sarjina Khan</strong>, Saumyadip Das, Md. Mazid-Ul-Haque');
+    const dp = pub('S.1','DP-CATNet: A Disease-Prototype-Conditioned Cross-Attention Network for Pulmonary Disease Classification','Submitted to IEEE Access',review);
+    const sensor = pub('S.2','SensorShield-Net: Toward Scanner-Agnostic Brain Tumor Classification via Cross-Attention Fusion and CCA-MMD','Submitted to IEEE Access',review);
+    const imaging = pub('S.3','AI-Enabled Convergence in Next-Generation Diagnostic Imaging: Convergence Across PET/MRI, POCUS, and Radiomics','Submitted to Frontiers in Radiology',review);
+    const best = pub('S.4','BEST: BanglaBERT-MuRIL Ensemble with Calibration and Explainability for Bengali Healthcare Severity Triage','Submitted to IEEE ICCIT 2026',review);
+    const traffic = pub('S.7','A Modality-Specific Benchmarking Framework for Road Traffic Monitoring Using YOLOv8n and YOLOv12m','Submitted to IEEE ICCIT 2026',review);
+    const techlay = pub('S.8','TechLay-X: An XAI-Based ML Framework for Layoff-Risk Prediction in the Technology Industry','Submitted to IEEE QPAIN 2027',review);
+    const hgat = pub('S.9','HGAT-XGB: Hierarchical Group-Aware Attention with XGBoost for Clinical Tabular Prediction Across Multiple Disease Domains','Submitted to IEEE ECCE-2027',review);
+    const all = [decoding,mamba,soil,journal,cnet,darenet,seed,nail,thesis,dp,sensor,imaging,best,traffic,techlay,hgat];
+    const conferences = [cnet,decoding,mamba,darenet,seed,nail,soil];
+    document.getElementById('tab-all').innerHTML = all.map((item,i)=>i<4?item:item.replace('class="pub-card"','class="pub-card pub-hidden"')).join('') + '<div class="show-more-wrap"><button class="show-more-btn" id="cleanShowMore">Show More ↓</button><button class="show-less-btn" id="cleanShowLess" style="display:none">Show Less ↑</button></div>';
+    document.getElementById('tab-conf').innerHTML = conferences.join('');
+    document.getElementById('tab-journal').innerHTML = journal;
+    document.getElementById('tab-review').innerHTML = [dp,sensor,imaging,best,traffic,techlay,hgat].join('');
+    const allTab=document.getElementById('tab-all'), hidden=()=>allTab.querySelectorAll('.pub-hidden'), more=document.getElementById('cleanShowMore'), less=document.getElementById('cleanShowLess');
+    more.onclick=()=>{hidden().forEach(x=>x.classList.add('shown'));more.style.display='none';less.style.display='inline-block';};
+    less.onclick=()=>{hidden().forEach(x=>x.classList.remove('shown'));more.style.display='inline-block';less.style.display='none';};
+    const stats=document.querySelectorAll('.hero-stats .stat-num'); if(stats.length>=4){stats[1].textContent='16';stats[2].textContent='11';stats[3].textContent='2';}
+  })();
+</script>
+<script>
+  (() => {
+    const doi = ['https://doi.org/10.1109/ICCSCE69880.2026.11750469','https://doi.org/10.1109/QPAIN69676.2026.11545564','https://doi.org/10.1109/EICT68394.2025.11355612'];
+    document.querySelectorAll('#clean-conf .pub-card').forEach((card,i)=>{
+      const chips = i===1 || i===2 || i===6
+        ? `<span class="chip ieee">IEEE</span><span class="chip accepted">✓ Published</span><a href="${doi[i===1?0:i===2?1:2]}" target="_blank" class="pub-link-btn"><i class="fa fa-external-link-alt"></i> DOI</a>`
+        : `<span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span><span class="pub-link-btn">Indexing Soon</span>`;
+      card.querySelector('.pub-info').insertAdjacentHTML('beforeend',`<div class="pub-chips">${chips}</div>`);
+    });
+    document.querySelector('#clean-journal .pub-info')?.insertAdjacentHTML('beforeend','<div class="pub-chips"><span class="chip journal">IJECE Journal</span><span class="chip accepted">✓ Published</span><a href="https://doi.org/10.11591/ijece.v16i2.pp924-944" target="_blank" class="pub-link-btn"><i class="fa fa-external-link-alt"></i> DOI</a></div>');
+    document.querySelectorAll('#clean-review .pub-card').forEach(card=>card.querySelector('.pub-info').insertAdjacentHTML('beforeend','<div class="pub-chips"><span class="chip review">Under Review</span></div>'));
+  })();
+</script>
+<script>
+  (() => {
+    const conf=document.getElementById('clean-conf');
+    if(conf){
+      const cards=[...conf.querySelectorAll('.pub-card')];
+      const order=[1,2,6,0,3,4,5];
+      cards.forEach(card=>card.querySelectorAll('.pub-chips').forEach(chip=>chip.remove()));
+      order.forEach(i=>conf.appendChild(cards[i]));
+      const doi=['https://doi.org/10.1109/ICCSCE69880.2026.11750469','https://doi.org/10.1109/QPAIN69676.2026.11545564','https://doi.org/10.1109/EICT68394.2025.11355612'];
+      [...conf.querySelectorAll('.pub-card')].forEach((card,i)=>{const published=i<3;const chips=published?`<span class="chip ieee">IEEE</span><span class="chip accepted">✓ Published</span><a href="${doi[i]}" target="_blank" class="pub-link-btn"><i class="fa fa-external-link-alt"></i> DOI</a>`:'<span class="chip ieee">IEEE</span><span class="chip accepted">✓ Accepted &amp; Presented</span><span class="pub-link-btn">Indexing Soon</span>';card.querySelector('.pub-info').insertAdjacentHTML('beforeend',`<div class="pub-chips">${chips}</div>`);});
+    }
+    const journal=document.querySelector('#clean-journal .pub-info'); if(journal){journal.querySelectorAll('.pub-chips').forEach(x=>x.remove());journal.insertAdjacentHTML('beforeend','<div class="pub-chips"><span class="chip journal">IJECE Journal</span><span class="chip accepted">✓ Published</span><a href="https://doi.org/10.11591/ijece.v16i2.pp924-944" target="_blank" class="pub-link-btn"><i class="fa fa-external-link-alt"></i> DOI</a></div>');}
+    document.querySelectorAll('#clean-review .pub-card').forEach(card=>{card.querySelectorAll('.pub-chips').forEach(x=>x.remove());card.querySelector('.pub-info').insertAdjacentHTML('beforeend','<div class="pub-chips"><span class="chip review">Under Review</span></div>');});
+  })();
+</script>
+<script>
+  (() => {
+    const addSectionToggle=(id,key)=>{const section=document.getElementById(id);if(!section)return;const cards=[...section.querySelectorAll(':scope > .pub-card')];if(cards.length<=4)return;cards.slice(4).forEach(card=>card.classList.add('section-extra'));const wrap=document.createElement('div');wrap.className='show-more-wrap';wrap.innerHTML=`<button class="show-more-btn" id="${key}More">Show More ↓</button><button class="show-less-btn" id="${key}Less" style="display:none">Show Less ↑</button>`;section.appendChild(wrap);const more=wrap.querySelector(`#${key}More`),less=wrap.querySelector(`#${key}Less`);more.onclick=()=>{cards.slice(4).forEach(card=>card.classList.add('visible'));more.style.display='none';less.style.display='inline-block';};less.onclick=()=>{cards.slice(4).forEach(card=>card.classList.remove('visible'));less.style.display='none';more.style.display='inline-block';};};
+    addSectionToggle('clean-conf','conf');
+    addSectionToggle('clean-review','review');
+  })();
+</script>
+<script>
+  (() => {
+    const all=document.getElementById('clean-all');
+    if(!all)return;
+    all.querySelectorAll('.show-more-wrap').forEach(x=>x.remove());
+    const extra=[...all.querySelectorAll('.clean-extra')];
+    extra.forEach(x=>x.style.display='none');
+    const wrap=document.createElement('div');wrap.className='show-more-wrap';wrap.innerHTML='<button class="show-more-btn" id="allMoreFinal">Show More ↓</button><button class="show-less-btn" id="allLessFinal" style="display:none">Show Less ↑</button>';all.appendChild(wrap);
+    const more=document.getElementById('allMoreFinal'),less=document.getElementById('allLessFinal');
+    more.onclick=()=>{extra.forEach(x=>x.style.display='flex');more.style.display='none';less.style.display='inline-block';};
+    less.onclick=()=>{extra.forEach(x=>x.style.display='none');less.style.display='none';more.style.display='inline-block';};
+  })();
+</script>
+<script>
+  (() => {
+    const all=document.getElementById('clean-all'); if(!all)return;
+    const extra=[...all.querySelectorAll('.clean-extra')], more=document.getElementById('allMoreFinal'), less=document.getElementById('allLessFinal'); let shown=0;
+    extra.forEach(x=>x.style.display='none');
+    more.onclick=()=>{extra.slice(shown,shown+4).forEach(x=>x.style.display='flex');shown=Math.min(shown+4,extra.length);less.style.display='inline-block';if(shown>=extra.length)more.style.display='none';};
+    less.onclick=()=>{extra.forEach(x=>x.style.display='none');shown=0;less.style.display='none';more.style.display='inline-block';};
+  })();
+</script>
+<script>
+  (() => {
+    document.querySelectorAll('#clean-review .pub-badge').forEach((badge,i)=>{badge.innerHTML=`S.${i+1}<br/>${i===6?'2027':'2026'}`;});
+    const names=['DP-CATNet:','SensorShield-Net:','AI-Enabled Convergence','BEST:','A Modality-Specific','TechLay-X:','HGAT-XGB:'];
+    document.querySelectorAll('#clean-all .clean-extra').forEach(card=>{const t=card.querySelector('h4')?.textContent||'';const i=names.findIndex(x=>t.startsWith(x));if(i>=0)card.querySelector('.pub-badge').innerHTML=`S.${i+1}<br/>${i===6?'2027':'2026'}`;});
+  })();
+</script>
+<script>
+  (() => {
+    const order=['Decoding Rider Risk:','A Comparison of State-Space','SoilSense:','The Ethics of AI','CNeT-Rice:','DARENet:','SeedConv-XG:','An Explainable CLAHE','AgentOpt:','DP-CATNet:','SensorShield-Net:','AI-Enabled Convergence','BEST:','A Modality-Specific','TechLay-X:','HGAT-XGB:'];
+    const all=document.getElementById('clean-all');
+    if(all){const wrap=all.querySelector('.show-more-wrap');const cards=[...all.querySelectorAll(':scope > .pub-card')];cards.sort((a,b)=>order.findIndex(x=>(a.querySelector('h4')?.textContent||'').startsWith(x))-order.findIndex(x=>(b.querySelector('h4')?.textContent||'').startsWith(x))).forEach((card,i)=>{card.style.display=i<4?'flex':'none';if(i<4)card.classList.remove('clean-extra');else card.classList.add('clean-extra');all.insertBefore(card,wrap);});}
+    const conf=document.getElementById('clean-conf');
+    if(conf){const cards=[...conf.querySelectorAll(':scope > .pub-card')];cards.sort((a,b)=>order.findIndex(x=>(a.querySelector('h4')?.textContent||'').startsWith(x))-order.findIndex(x=>(b.querySelector('h4')?.textContent||'').startsWith(x))).forEach((card,i)=>{const badge=card.querySelector('.pub-badge');if(badge)badge.innerHTML=`C.${i+1}<br/>${i===2?'2025':'2026'}`;conf.appendChild(card);});}
+    const mapping=[['Decoding Rider Risk:','C.1'],['A Comparison of State-Space','C.2'],['SoilSense:','C.3'],['CNeT-Rice:','C.4'],['DARENet:','C.5'],['SeedConv-XG:','C.6'],['An Explainable CLAHE','C.7']];
+    document.querySelectorAll('#clean-all .pub-card').forEach(card=>{const t=card.querySelector('h4')?.textContent||'';const m=mapping.find(x=>t.startsWith(x[0]));if(m)card.querySelector('.pub-badge').innerHTML=`${m[1]}<br/>${m[1]==='C.3'?'2025':'2026'}`;});
+    const more=document.querySelector('#clean-all .show-more-btn'),less=document.querySelector('#clean-all .show-less-btn');if(more&&less){more.onclick=()=>{all.querySelectorAll('.clean-extra').forEach(x=>x.style.display='flex');more.style.display='none';less.style.display='inline-block';};less.onclick=()=>{all.querySelectorAll('.clean-extra').forEach(x=>x.style.display='none');less.style.display='none';more.style.display='inline-block';};}
+  })();
+</script>
+<script>
+  (() => {
+    const all = document.getElementById('clean-all');
+    if (!all) return;
+    const cards = [...all.querySelectorAll(':scope > .pub-card')];
+    const extra = cards.slice(4);
+    const wrap = all.querySelector('.show-more-wrap');
+    const more = wrap?.querySelector('.show-more-btn');
+    const less = wrap?.querySelector('.show-less-btn');
+    if (!wrap || !more || !less || cards.length <= 4) return;
+
+    let visibleCount = 0;
+    const update = () => {
+      extra.forEach((card, index) => {
+        card.style.display = index < visibleCount ? 'flex' : 'none';
+      });
+      more.style.display = visibleCount < extra.length ? 'inline-block' : 'none';
+      less.style.display = visibleCount > 0 ? 'inline-block' : 'none';
+    };
+
+    more.onclick = () => {
+      visibleCount = Math.min(visibleCount + 4, extra.length);
+      update();
+    };
+    less.onclick = () => {
+      visibleCount = 0;
+      update();
+    };
+    update();
+  })();
+</script>
+<script>
+  (() => {
+    const conf = document.getElementById('clean-conf');
+    const wrap = conf?.querySelector('.show-more-wrap');
+    if (!conf || !wrap) return;
+    [...conf.querySelectorAll(':scope > .pub-card')].forEach(card => wrap.before(card));
+  })();
+</script>
+<script>
+  (() => {
+    const grid = document.querySelector('#projects .projects-grid');
+    if (!grid) return;
+    const unwanted = ['Bangla Lemmatizer'];
+    [...grid.querySelectorAll('.project-card')].forEach(card => {
+      const title = card.querySelector('h3')?.textContent.trim() || '';
+      if (unwanted.includes(title) || (title === 'Rice Disease Detection (MambaOut)' && !card.querySelector('.project-date'))) card.remove();
+    });
+    const order = [
+      'Modern AgeStudio', 'SellerBot:', 'DocReader BD', 'ROBO:', 'SafePath',
+      'SoilSense', 'Rice Disease Detection', 'Life of a River', 'Real Estate Management System',
+      'Doctor Appointment System', 'Doctor Appointment Management System', 'Gadget Shop Management System'
+    ];
+    const cards = [...grid.querySelectorAll('.project-card')];
+    cards.sort((a, b) => {
+      const title = card => card.querySelector('h3')?.textContent.trim() || '';
+      return order.findIndex(x => title(a).startsWith(x)) - order.findIndex(x => title(b).startsWith(x));
+    }).forEach(card => grid.appendChild(card));
+  })();
+</script>
+<script>
+  (() => {
+    const icons = [
+      ['Modern AgeStudio', 'fas fa-building'],
+      ['SellerBot:', 'fas fa-robot'],
+      ['ROBO:', 'fas fa-cogs'],
+      ['Rice Disease Detection', 'fas fa-seedling']
+    ];
+    document.querySelectorAll('#projects .project-card').forEach(card => {
+      const title = card.querySelector('h3')?.textContent.trim() || '';
+      const match = icons.find(([name]) => title.startsWith(name));
+      if (match) card.querySelector('.project-icon').innerHTML = `<i class="${match[1]}"></i>`;
+    });
+  })();
+</script>
+<script>
+  (() => {
+    document.querySelectorAll('#awards .award-card .cert-link').forEach(button => button.remove());
+    document.querySelectorAll('#awards .award-card p').forEach(p => {
+      if (p.textContent.includes('maintaining a CGPA')) p.remove();
+    });
+    document.getElementById('certificates')?.remove();
+
+    const certificates = [
+      ['Deans-List-Honors-Fall-2024-2025.pdf', "Dean's List — Fall 2024–2025"],
+      ['Deans-List-Honors-Spring-2023-2024.pdf', "Dean's List — Spring 2023–2024"],
+      ['Deans-List-Honors-Fall-2023-2024.pdf', "Dean's List — Fall 2023–2024"],
+      ['Excellent-Performance-Science-Poster-Contest-2022.pdf', 'Science Poster Contest — Excellent Performance'],
+      ['Quarter-Finalist-Climate-Science-Olympiad-2023.pdf', 'Climate Science Olympiad — Quarter Finalist'],
+      ['IT_Essentials_certificate_Cisco.pdf', 'Cisco Networking Academy — IT Essentials'],
+      ['THE_INFINITY_AI_BUILDFEST_2026_-_Participation_Certificate_Nur-E_Sarjina_Khan.pdf', 'Infinity AI BuildFest 2026 — Participation'],
+      ['National Steam Olympiad.pdf', 'National STEAM Olympiad — Volunteer'],
+      ['Sololearn-Introduction to Python.pdf', 'SoloLearn — Introduction to Python'],
+      ['ICCSCE.pdf', 'ICCSCE 2026 — Paper Presentation'],
+      ['Cnet-Rice.pdf', 'SPICSCON 2026 — Paper Presentation'],
+      ['DARENet.pdf', 'MARSCON 2026 — Paper Presentation'],
+      ['COMPAS.pdf', 'COMPAS 2026 — Paper Presentation'],
+      ['Nail.pdf', 'SPICSCON 2026 — Paper Presentation'],
+      ['Certificate of JUST.pdf', 'ICETSD 2025 — Paper Presentation']
+    ];
+    const awards = document.querySelector('#awards .container');
+    if (!awards) return;
+    const gallery = document.createElement('div');
+    gallery.className = 'certificate-gallery';
+    gallery.innerHTML = certificates.map(([file, title]) => {
+      const url = encodeURI(`certificates/${file}`);
+      return `<button class="certificate-thumb" type="button" onclick="openPDF('${url.replace(/'/g, "\\'")}','${title.replace(/'/g, "\\'")}')"><iframe src="${url}#page=1&view=FitH" title="${title}"></iframe><span>${title}</span></button>`;
+    }).join('');
+    awards.appendChild(gallery);
+  })();
+</script>
+<script>
+  (() => {
+    document.querySelector('.certificate-gallery')?.remove();
+    const grid = document.querySelector('#awards .awards-grid');
+    if (!grid) return;
+    const certificates = [
+      ['Deans-List-Honors-Fall-2024-2025.pdf', "Dean's List — Fall 2024–2025"],
+      ['Deans-List-Honors-Spring-2023-2024.pdf', "Dean's List — Spring 2023–2024"],
+      ['Deans-List-Honors-Fall-2023-2024.pdf', "Dean's List — Fall 2023–2024"],
+      ['Quarter-Finalist-Climate-Science-Olympiad-2023.pdf', 'Climate Science Olympiad — Quarter Finalist'],
+      ['Excellent-Performance-Science-Poster-Contest-2022.pdf', 'Science Poster Contest — Excellent Performance'],
+      ['IT_Essentials_certificate_Cisco.pdf', 'Cisco Networking Academy — IT Essentials'],
+      ['THE_INFINITY_AI_BUILDFEST_2026_-_Participation_Certificate_Nur-E_Sarjina_Khan.pdf', 'Infinity AI BuildFest 2026 — Participation'],
+      ['National Steam Olympiad.pdf', 'National STEAM Olympiad — Volunteer'],
+      ['Sololearn-Introduction to Python.pdf', 'SoloLearn — Introduction to Python'],
+      ['ICCSCE.pdf', 'ICCSCE 2026 — Paper Presentation'],
+      ['Cnet-Rice.pdf', 'SPICSCON 2026 — Paper Presentation'],
+      ['DARENet.pdf', 'MARSCON 2026 — Paper Presentation'],
+      ['COMPAS.pdf', 'COMPAS 2026 — Paper Presentation'],
+      ['Nail.pdf', 'SPICSCON 2026 — Paper Presentation'],
+      ['Certificate of JUST.pdf', 'ICETSD 2025 — Paper Presentation']
+    ];
+    const preview = ([file, title]) => {
+      const url = encodeURI(`certificates/${file}`);
+      return `<button class="award-preview" type="button" onclick="openPDF('${url.replace(/'/g, "\\'")}','${title.replace(/'/g, "\\'")}')"><iframe src="${url}#page=1&view=FitH" title="${title}"></iframe></button>`;
+    };
+    const descriptions = [
+      'Recognized for outstanding academic performance at AIUB.',
+      'Recognized for consistent academic excellence at AIUB.',
+      'Recognized for sustained academic achievement at AIUB.',
+      'Quarter finalist in the global Climate Science Olympiad.',
+      'Awarded for excellent performance in the AIUB science poster contest.',
+      'Completed Cisco Networking Academy IT Essentials training.',
+      'Participated in the Infinity AI BuildFest 2026 event.',
+      'Volunteered at the National STEAM Olympiad.',
+      'Completed the SoloLearn Introduction to Python course.',
+      'Presented a research paper at ICCSCE 2026.',
+      'Presented a research paper at SPICSCON 2026.',
+      'Presented a research paper at MARSCON 2026.',
+      'Presented a research paper at COMPAS 2026.',
+      'Presented a research paper at SPICSCON 2026.',
+      'Presented a research paper at ICETSD 2025.'
+    ];
+    const existing = [...grid.querySelectorAll('.award-card')];
+    existing.slice(0, 5).forEach((card, i) => {
+      card.querySelector('.award-icon')?.insertAdjacentHTML('afterend', preview(certificates[i]));
+      card.querySelectorAll('p:not(.award-org):not(.award-date)').forEach(p => p.remove());
+      const description = document.createElement('p');
+      description.className = 'award-description';
+      description.textContent = descriptions[i];
+      card.appendChild(description);
+    });
+    certificates.slice(5).forEach(([file, title], i) => {
+      const card = document.createElement('div');
+      card.className = 'award-card';
+      card.innerHTML = `<div class="award-icon">📜</div>${preview([file, title])}<h3>${title}</h3><p class="award-org">Certificate</p><p class="award-description">${descriptions[i + 5]}</p>`;
+      grid.appendChild(card);
+    });
+  })();
+</script>
+<script>
+  (() => {
+    const nav = document.querySelector('nav');
+    const links = [...document.querySelectorAll('.nav-links a, .mobile-menu a')];
+    const sections = [...document.querySelectorAll('section[id]')].filter(section => getComputedStyle(section).display !== 'none');
+    const updateActiveNav = () => {
+      const position = window.scrollY + (nav?.offsetHeight || 64) + 24;
+      let current = '';
+      sections.forEach(section => { if (position >= section.offsetTop) current = section.id; });
+      links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${current}`));
+    };
+    window.addEventListener('scroll', updateActiveNav, {passive:true});
+    window.addEventListener('resize', updateActiveNav);
+    updateActiveNav();
+  })();
 </script>
 </body>
 </html>
