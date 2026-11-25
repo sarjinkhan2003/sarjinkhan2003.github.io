@@ -1242,5 +1242,16 @@
     });
   })();
 </script>
+<script>
+  (() => {
+    const titles = ['AQGuard:', 'Toward an Adaptive Loop', 'Explainability Drift', 'LLM-Driven Cardiovascular'];
+    document.querySelectorAll('h4').forEach(heading => {
+      const title = heading.textContent.trim();
+      if (!titles.some(prefix => title.startsWith(prefix))) return;
+      const meta = heading.parentElement?.querySelector('.pub-meta');
+      if (meta) meta.textContent = meta.textContent.replace(/\s*\(Q[1-4]\)/g, '');
+    });
+  })();
+</script>
 </body>
 </html>
