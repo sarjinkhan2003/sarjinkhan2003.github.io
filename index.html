@@ -416,7 +416,7 @@
     <div class="edu-timeline">
       <div class="edu-item fade-in"><div class="edu-card"><div class="edu-card-top"><div><h3>Research Assistant · <a href="https://www.elitelab.ai/" target="_blank" rel="noopener">ELITE Research Lab</a></h3><p>Queens, New York, USA (Remote)</p></div><div class="edu-date">September 2026 – Ongoing</div></div><p>Contributing to AI research projects through experiment design, model development and evaluation, and manuscript preparation for conference and journal submissions.</p></div></div>
       <div class="edu-item fade-in"><div class="edu-card"><div class="edu-card-top"><div><h3>Trainee Software Engineer · <a href="https://www.nexulyze.com/" target="_blank" rel="noopener">Nexulyze</a></h3><p>Dhaka, Bangladesh</p></div><div class="edu-date">September 2026 – Ongoing</div></div><p>Developing responsive portfolio and SaaS interfaces with React, TypeScript, and Tailwind CSS; conducting interface audits and collaborating through Git-based feature branches and code reviews.</p></div></div>
-      <div class="edu-item fade-in"><div class="edu-card"><div class="edu-card-top"><div><h3>SQA Intern · <a href="https://www.exambinary.com/en" target="_blank" rel="noopener">ExamBinary Ltd</a></h3><p>Dhaka, Bangladesh</p></div><div class="edu-date">May 10 – August 10, 2026</div></div><p>Conducted functional, black-box, software, and API testing with Postman to validate endpoint functionality, data integrity, and system performance.</p></div></div>
+      <div class="edu-item fade-in"><div class="edu-card"><div class="edu-card-top"><div><h3>SQA Intern · <a href="https://www.exambinary.com/en" target="_blank" rel="noopener">ExamBinary Ltd</a></h3><p>Dhaka, Bangladesh</p></div><div class="edu-date">May 10 – August 10 2026</div></div><p>Conducted functional, black-box, software, and API testing with Postman to validate endpoint functionality, data integrity, and system performance.</p></div></div>
     </div>
   </div>
 </section>
@@ -1230,6 +1230,16 @@
       ['Design, Prototyping & Other Tools', ['Figma', 'Autodesk AutoCAD', 'Microsoft Office Applications']]
     ];
     grid.innerHTML = groups.map(([name, skills]) => `<div class="skill-group"><div class="skill-group-label">${name}</div><div class="skill-pills">${skills.map(skill => `<span class="skill-pill">${skill}</span>`).join('')}</div></div>`).join('');
+  })();
+</script>
+<script>
+  (() => {
+    document.querySelectorAll('h4').forEach(heading => {
+      if (heading.textContent.trim() === 'An Explainable CLAHE-Enhanced Hybrid CNN-Transformer Framework for Nail Disease Classification') {
+        const meta = heading.parentElement?.querySelector('.pub-meta');
+        if (meta && meta.textContent.includes('SPICSCON')) meta.textContent = 'SPICSCON 2026 · IEEE · Natore, Bangladesh · Presented 14 August 2026';
+      }
+    });
   })();
 </script>
 </body>
